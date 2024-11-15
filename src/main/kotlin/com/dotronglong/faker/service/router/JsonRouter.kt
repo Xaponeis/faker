@@ -97,8 +97,13 @@ class JsonRouter @Autowired constructor(
                 }
                 if (spec.request.headers != null) {
                     var isHeaderOK = true
-                    for (key in spec.request.headers.keys) {
-                        if (request.headers[key] == null) {
+                    for (entry in spec.request.headers.entries) {
+                        if (request.headers[entry.key] == null)  {
+                            isHeaderOK = false
+                            break                            
+                        }
+                        val pattern = Pattern.compile(entry.value)
+                        if (!pattern.matcher(request.headers[entry.key]!!.joinToString()).matches()) {
                             isHeaderOK = false
                             break
                         }
