@@ -8,5 +8,6 @@ import org.springframework.stereotype.Component
 data class FakerApplicationProperties(
         var source: String = "",
         var watch: Boolean = false,
-        var version: String = "dev"
+        var version: String = "dev",
+        var example: String = ""
 )

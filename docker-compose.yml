@@ -1,0 +1,8 @@
+services:
+
+  faker:
+    image: xaponeis/faker:latest
+    volumes:
+      - /path/to/your/mocks/folder:/app/mocks
+    ports:
+      - "3030:3030"
