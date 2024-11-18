@@ -130,6 +130,12 @@ class JsonRouter @Autowired constructor(
         }
 
         val files = folder.listFiles()
+
+        if (files != null && files.isEmpty()) {
+            logger.info("No mocks found, creating '/example' endpoint.")
+            scan(properties.example)
+        }
+
         for (file in files!!) {
             if (file.isDirectory) {
                 scan(file.absolutePath)
